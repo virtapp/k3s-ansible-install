@@ -1,0 +1,11 @@
+---
+k3s_version: v1.22.3+k3s1
+ansible_user: ubuntu
+ansible_connection: ssh
+ansible_ssh_pass: ubuntu
+ansible_sudo_pass: ubuntu
+systemd_dir: /etc/systemd/system
+master_ip: "{{ hostvars[groups['master'][0]]['ansible_host'] | default(groups['master'][0]) }}"
+# change these to your liking, the only required one is--no-deploy servicelb
+extra_server_args: "--disable local-storage"
+extra_agent_args: ""
